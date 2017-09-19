@@ -1,0 +1,22 @@
+[ 
+    {
+        "front": "What Script are we learning?",
+        "back": "JavaScript"
+    },
+    {
+        "front": "Finish this statement: Node.?",
+        "back": "JS"
+    },
+    {
+        "front": "HTML and ... make up the frontend layout?",
+        "back": "CSS"
+    },
+    {
+        "front": "What is the faster way of doing JavaScript?",
+        "back": "jQuery"
+    },
+    {
+        "front": "What Relational Database are we learning?",
+        "back": "MySQL"
+    }
+]

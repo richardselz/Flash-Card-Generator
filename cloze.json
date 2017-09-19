@@ -1,0 +1,22 @@
+[ 
+    {
+        "fullText": "The script that we are learning is JavaScript.",
+        "cloze": "JavaScript"
+    },
+    {
+        "fullText": "Finish this statement: Node.JS?",
+        "cloze": "JS"
+    },
+    {
+        "fullText": "HTML and CSS make up the frontend layout?",
+        "cloze": "CSS"
+    },
+    {
+        "fullText": "jQuery is the faster way of doing JavaScript.",
+        "cloze": "jQuery"
+    },
+    {
+        "fullText": "MySQL is the Relational Database that we are learning.",
+        "cloze": "MySQL"
+    }
+]
