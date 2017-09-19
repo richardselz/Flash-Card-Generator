@@ -1,0 +1,22 @@
+{
+  "name": "flash-card-generator",
+  "version": "1.0.0",
+  "description": "Flash Card Generator for UCSD Bootcamp Homework",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardselz/Flash-Card-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardselz/Flash-Card-Generator/issues"
+  },
+  "homepage": "https://github.com/richardselz/Flash-Card-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.2.3"
+  }
+}
