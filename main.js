@@ -67,6 +67,7 @@ function playGame(countIn){
             }else {
                 console.log("You got the answer wrong.");
                 if(!basic) console.log(fullText);
+                console.log(correctAnswer);
                 answersWrong++;
             }
             count++;
