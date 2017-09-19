@@ -1,5 +1,5 @@
-var basicCard = require("./BasicCard.js");
-var clozeCard = require("./ClozeCard.js");
+var BasicCard = require("./BasicCard.js");
+var ClozeCard = require("./ClozeCard.js");
 var basicData = require("./basic.json");
 var clozeData = require("./cloze.json");
 var fs = require("fs");
@@ -8,7 +8,7 @@ var inquirer = require("inquirer");
 
 var count = answersRight = answersWrong = 0;
 var basic = cloze = false;
-var correctAnswer = basicFront = "";
+var correctAnswer = basicFront = "123";
 
 function playAgain() {
     console.log("Answered Right: ",answersRight);
@@ -29,6 +29,20 @@ function playAgain() {
     })
 }
 
+function readingBasic() {
+    var testingVal = "1234";
+    fs.readFile("./basic.json", "utf8", function(err, data) {
+        if(err) throw err;
+        var obj = JSON.parse(data);
+        console.log("Front: ",obj[count].front," Back: ",obj[count].back);
+        correctAnswer = obj[count].back;
+        testingVal = obj[count].front;
+        console.log(typeof basicFront);
+    });
+    console.log(basicFront);
+    return "Hello"+testingVal;
+}
+
 function playGame(countIn){
     count = countIn;
     console.log("In GAME");
@@ -43,21 +57,22 @@ function playGame(countIn){
                         fs.readFile("./basic.json", "utf8", function(err, data) {
                             if(err) throw err;
                             var obj = JSON.parse(data);
-                            console.log("Front: ",obj[count].front," Back: ",obj[count].back);
-                            correctAnswer = obj[count].back;
-                            basicFront = obj[count].front;
-                            return obj[count].front;
+                            var basicCard = new BasicCard(obj[count].front,obj[count].back);
+                            console.log("Front: ",basicCard.front);
+                            correctAnswer = basicCard.back;
                         });
+                        return "The Question is: ";
                     } else {
                         console.log("Cloze Game!");
                         fs.readFile("./cloze.json", "utf8", function(err, data) {
                             if(err) throw err;
                             var obj = JSON.parse(data);
                             var clozeCard = new ClozeCard(obj[count].fullText, obj[count].cloze);
-                            console.log("Partial Text: ",clozeCard.partial," Cloze: ",clozeCard.cloze," Full Text: ",clozeCard.fullText);
+                            console.log(clozeCard.partial);
+                            //," Cloze: ",clozeCard.cloze," Full Text: ",clozeCard.fullText
                             correctAnswer = clozeCard.cloze;
                         });
-                        return "Hello from the Cloze Game!";
+                        return "The Question is: ";
                     }
                 },
                 name: "answer"

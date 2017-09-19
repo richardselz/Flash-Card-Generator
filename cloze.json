@@ -16,7 +16,7 @@
         "cloze": "jQuery"
     },
     {
-        "fullText": "MySQL is the Relational Database that we are learning.",
-        "cloze": "MySQL"
+        "fullText": "MySQL is the Relational Database that we are learning. (testing of no-cloze)",
+        "cloze": "Node.JS"
     }
 ]
