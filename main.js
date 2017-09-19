@@ -8,7 +8,7 @@ var inquirer = require("inquirer");
 
 var count = answersRight = answersWrong = 0;
 var basic = cloze = false;
-var correctAnswer = basicFront = "123";
+var correctAnswer = basicFront = fullText = "";
 
 function playAgain() {
     console.log("Answered Right: ",answersRight);
@@ -29,31 +29,14 @@ function playAgain() {
     })
 }
 
-function readingBasic() {
-    var testingVal = "1234";
-    fs.readFile("./basic.json", "utf8", function(err, data) {
-        if(err) throw err;
-        var obj = JSON.parse(data);
-        console.log("Front: ",obj[count].front," Back: ",obj[count].back);
-        correctAnswer = obj[count].back;
-        testingVal = obj[count].front;
-        console.log(typeof basicFront);
-    });
-    console.log(basicFront);
-    return "Hello"+testingVal;
-}
-
 function playGame(countIn){
     count = countIn;
-    console.log("In GAME");
     if(count < 5){
-        console.log("Count: ",count);
         correctAnswer = basicFront = "";
         inquirer.prompt([
             {
                 message: function() {
                     if(basic) {
-                        console.log("Basic Game!");
                         fs.readFile("./basic.json", "utf8", function(err, data) {
                             if(err) throw err;
                             var obj = JSON.parse(data);
@@ -63,7 +46,6 @@ function playGame(countIn){
                         });
                         return "The Question is: ";
                     } else {
-                        console.log("Cloze Game!");
                         fs.readFile("./cloze.json", "utf8", function(err, data) {
                             if(err) throw err;
                             var obj = JSON.parse(data);
@@ -71,6 +53,7 @@ function playGame(countIn){
                             console.log(clozeCard.partial);
                             //," Cloze: ",clozeCard.cloze," Full Text: ",clozeCard.fullText
                             correctAnswer = clozeCard.cloze;
+                            fullText = clozeCard.fullText;
                         });
                         return "The Question is: ";
                     }
@@ -83,6 +66,7 @@ function playGame(countIn){
                 answersRight++;
             }else {
                 console.log("You got the answer wrong.");
+                if(!basic) console.log(fullText);
                 answersWrong++;
             }
             count++;
